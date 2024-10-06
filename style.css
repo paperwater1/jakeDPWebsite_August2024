@@ -1,14 +1,21 @@
+/* Ensure box-sizing is consistent across elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 header {
     background-color: #ffffff;
     padding: 1rem;
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: space-between;
     align-items: center;
 }
@@ -22,14 +29,19 @@ nav {
     margin-right: 20px;
 }
 
+
+
 nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center; /* Center items on small screens */
 }
 
 nav li {
     margin-left: 1rem;
+    white-space: nowrap; /* Prevent breaking of navigation items */
 }
 
 nav a {
@@ -50,7 +62,7 @@ a {
     color: blue;
 }
 
-header h1 a, 
+header h1 a,
 header h1 a:hover {
     color: black;
     text-decoration: none;
@@ -60,41 +72,134 @@ header nav a:hover {
     color: black;
 }
 
+/* Grid Layout for Projects */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive columns */
     gap: 2rem;
     margin-bottom: 2rem;
+    align-items: start; /* Align items to the start to maintain uniform top alignment */
 }
 
+/* Project Item Styling */
 .project-item {
-    position: relative;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5rem;
 }
 
-.project-item a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.project-item img {
+/* Video Wrapper with 4:3 Aspect Ratio */
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    aspect-ratio: 4 / 3; /* Maintain a 4:3 aspect ratio */
+    background-color: #ffffff;
+    overflow: hidden; /* Hide overflow to enable cropping */
 }
 
+/* Thumbnail Video Styling - Crop to Fill the Container */
+.thumbnail-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the container, cropping if necessary */
+    display: block;
+}
+
+/* Project Title Styling */
 .project-item h3 {
     margin: 0.5rem 0 0 0;
     padding: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: normal;
     color: #333;
     text-align: left;
 }
 
+/* Hover Effect for Video */
+.thumbnail-video:hover {
+    opacity: 0.9;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    nav {
+        margin-right: 0;
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    nav li {
+        margin: 0.5rem;
+        display: inline-block;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    h2 {
+        margin-top: 0.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* More compact for mobile */
+    }
+    
+    /* Adjusted video height for smaller screens */
+    .video-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        aspect-ratio: 4 / 3; /* Maintain a 4:3 aspect ratio */
+        background-color: #ffffff;
+        overflow: hidden; /* Hide overflow to enable cropping */
+    }
+
+    .thumbnail-video {
+        object-position: center; /* Ensure the video is centered */
+    }
+
+    .project-item h3 {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+}
+
+/* Additional Button Styling */
+button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Additional Styles */
 .project-page {
     max-width: 800px;
     margin: 0 auto;
@@ -103,7 +208,7 @@ header nav a:hover {
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Adjust this value as needed */
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -119,11 +224,10 @@ header nav a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 20px;
-    border-radius: 5px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.7); /* Added for better visibility */
-    border-radius: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px; /* Optional: Rounded corners */
 }
 
 .play-button p {
@@ -131,57 +235,8 @@ header nav a:hover {
     color: #ffffff;
     font-size: 48px;
     font-weight: bold;
-    border-radius: 80%;
 }
 
 .video-container:hover .play-button {
     opacity: 1;
-}
-
-button {
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    border-radius: 80%;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav {
-        margin-right: 0;
-        margin-top: 1rem;
-        width: 100%;
-
-    }
-
-    nav ul {
-        justify-content: space-between;
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap; /* Allow wrapping on small screens */
-        text-align: center;
-    }
-    
-
-    nav li {
-        margin: 0.5rem 0;
-        display: inline-block;
-    }
-
-    /* Ensure "Music Video" stays on one line */
-    nav li:nth-child(2) {
-        white-space: nowrap;
-    }
 }

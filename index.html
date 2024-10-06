@@ -6,7 +6,7 @@
     <title>Jake Wolfert</title>
     <link rel="stylesheet" href="style.css">
     <script src="projectsData.js"></script>
-<script src="projects.js"></script>
+    <script src="projects.js" defer></script>
 </head>
 <body>
     <header>
@@ -23,10 +23,19 @@
     </header>
 
     <main role="main">
-        <!-- Content will be dynamically inserted here -->
+        <div class="project-grid">
+            <!-- Project items will be dynamically inserted here by projects.js -->
+            <!-- Example:
+            <div class="project-item">
+                <a href="#project1">
+                    <div class="video-wrapper">
+                        <video src="video1.mp4" class="thumbnail-video" ... ></video>
+                    </div>
+                    <h3>Project Title 1</h3>
+                </a>
+            </div>
+            -->
+        </div>
     </main>
-
-    <script src="projectsData.js"></script>
-    <script src="projects.js"></script>
 </body>
 </html>
