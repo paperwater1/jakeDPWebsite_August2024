@@ -98,7 +98,7 @@ const projectsData = [
     director_of_photography: "Jake Wolfert",
     },
     {
-        id: "wovvoka-gang",
+    id: "wovvoka-gang",
     title: "Wovvoka - GANG!!!",
     category: "music-videos",
     featured: false,
@@ -108,7 +108,7 @@ const projectsData = [
     director_of_photography: "Jake Wolfert",
     },
     {
-        id: "cold-war-kids-what-you-say",
+    id: "cold-war-kids-what-you-say",
     title: "Cold War Kids - What You Say",
     category: "music-videos",
     featured: false,
