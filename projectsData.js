@@ -142,7 +142,7 @@ const projectsData = [
     category: "music-videos",
     featured: false,
     thumbnail: "thumbnails/tellyou.mp4",
-    videoUrl: "https://vimeo.com/user22147635",
+    videoUrl: "https://vimeo.com/473895565",
     director: "Dustin Tan",
     director_of_photography: "Jake Wolfert",
 },
@@ -367,7 +367,7 @@ const projectsData = [
     director: "Kevin Clark",
     writer: "Robby Che",
     director_of_photography: "Jake Wolfert",
-}   
+}
     
 ];
 
